@@ -1,13 +1,19 @@
 import React, {useState} from 'react'
 
-const DisplayElement = (props) => {
-    return (
-        <div>
-            <ul>
-                <li> Dates will go here </li>
-            </ul>
-        </div>
-    )
+class DisplayElement extends React.Component {
+
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return (
+            <div>
+                <ul>
+                </ul>
+            </div>
+        )
+    }
 }
 
 export default DisplayElement

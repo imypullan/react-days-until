@@ -7,7 +7,6 @@ const ButtonElement = (props) => {
             <button onClick={props.handleClick}>Show days until</button>
         </div>
     )
-
 }
 
 export default ButtonElement
