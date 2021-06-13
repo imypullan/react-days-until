@@ -4,6 +4,37 @@ import DisplayElement from "./DisplayElement"
 import ButtonElement from "./ButtonElement"
 
 class Parent extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            today: new Date(),
+            thisYear: this.state.today.getFullYear(),
+            dates: [
+                {
+                    name: "Christmas",
+                    numericDate: new Date(this.state.thisYear, 11, 25),
+                    daysUntil: 0
+                },
+                {
+                    name: "New Year's Day",
+                    numericDate: new Date(this.state.thisYear, 12, 1),
+                    daysUntil: 0
+                },
+                {
+                    name: "Valentine's Day",
+                    numericDate: new Date(this.state.thisYear, 1, 14),
+                    daysUntil: 0
+                }
+            ]
+        }
+    }
+
+    componentDidMount() {
+        this.state.dates.map(date =>(
+            date.numericDate < this.state.thisYear? date.numericDate.setFullYear((this.state.thisYear + 1)) : date.numericDate
+        ))
+    }
+)}
 
 
     render() {
