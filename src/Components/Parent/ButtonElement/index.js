@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 
 const ButtonElement = (props) => {
+
     return (
         <div>
-            <button>Show days until</button>
+            <button onClick={props.handleClick}>Show days until</button>
         </div>
     )
 

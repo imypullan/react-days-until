@@ -41,11 +41,12 @@ class Parent extends React.Component {
     prepareDates = () => {
         this.checkDateIsFuture()
         this.calculateDaysUntil()
+        console.log(this.state.dates)
     }
 
     checkDateIsFuture = () => {
         this.state.dates.map(date => (
-            date.numericDate < this.state.thisYear? date.numericDate.setFullYear((this.state.thisYear + 1)) : date.numericDate
+            date.numericDate < this.state.today? date.numericDate.setFullYear((this.state.thisYear + 1)) : date.numericDate
         ))
     }
 
@@ -61,7 +62,7 @@ class Parent extends React.Component {
             <div>
                 <TextElement />
                 <DisplayElement dates={this.state.dates}/>
-                <ButtonElement dates={this.state.dates} handleClick={this.prepareDates()} />
+                <ButtonElement dates={this.state.dates} handleClick={this.prepareDates} />
             </div>
         )
     }
