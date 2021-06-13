@@ -12,7 +12,6 @@ class Parent extends React.Component {
             dates: []
         }
     }
-
     componentDidMount() {
         this.setState({
             dates: [
@@ -33,22 +32,21 @@ class Parent extends React.Component {
                 }
             ]
         })
-        // const msInDay = 1000 * 60 * 60 *24
-        // console.log(this.state.dates)
-        // this.state.dates.map(date =>(
-        //     date.numericDate < this.state.thisYear? date.numericDate.setFullYear((this.state.thisYear + 1)) : date.numericDate
-        // ))
-        // console.log(this.state.dates)
     }
 
-
+// const msInDay = 1000 * 60 * 60 *24
+    // console.log(this.state.dates)
+    // this.state.dates.map(date =>(
+    //     date.numericDate < this.state.thisYear? date.numericDate.setFullYear((this.state.thisYear + 1)) : date.numericDate
+    // ))
+    // console.log(this.state.dates)
 
     render() {
         return (
             <div>
                 <TextElement />
-                <DisplayElement />
-                <ButtonElement />
+                <DisplayElement dates={this.state.dates}/>
+                <ButtonElement dates={this.state.dates}/>
             </div>
         )
     }
