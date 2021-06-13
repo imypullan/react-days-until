@@ -11,7 +11,7 @@ class DisplayElement extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.dates !== prevProps.dates) {
+        if (this.props.showInfo !== prevProps.showInfo) {
             this.setState({
                 dates: this.props.dates,
                 showInfo: this.props.showInfo
@@ -24,7 +24,7 @@ class DisplayElement extends React.Component {
             <div style={{display: this.state.showInfo? "block": "none"}}>
                 <ul>
                     {this.state.dates.map(date=>(
-                        <li>
+                        <li key={date.name}>
                             {date.daysUntil} days until {date.name}
                         </li>
                     ))}

@@ -42,7 +42,9 @@ class Parent extends React.Component {
     prepareDates = () => {
         this.checkDateIsFuture()
         this.calculateDaysUntil()
-        console.log(this.state.dates)
+        this.setState({
+            showInfo: true
+        })
     }
 
     checkDateIsFuture = () => {
