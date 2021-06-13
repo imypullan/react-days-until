@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import TextElement from "./TextElement"
 import DisplayElement from "./DisplayElement"
 import ButtonElement from "./ButtonElement"
@@ -65,7 +65,7 @@ class Parent extends React.Component {
             <div>
                 <TextElement />
                 <DisplayElement dates={this.state.dates} showInfo={this.state.showInfo}/>
-                <ButtonElement dates={this.state.dates} handleClick={this.prepareDates} />
+                <ButtonElement handleClick={this.prepareDates} />
             </div>
         )
     }
