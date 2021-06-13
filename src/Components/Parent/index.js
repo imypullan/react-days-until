@@ -8,7 +8,13 @@ class Parent extends React.Component {
         super(props)
         this.state = {
             today: new Date(),
-            thisYear: this.state.today.getFullYear(),
+            thisYear: new Date().getFullYear(),
+            dates: []
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
             dates: [
                 {
                     name: "Christmas",
@@ -26,15 +32,15 @@ class Parent extends React.Component {
                     daysUntil: 0
                 }
             ]
-        }
+        })
+        // const msInDay = 1000 * 60 * 60 *24
+        // console.log(this.state.dates)
+        // this.state.dates.map(date =>(
+        //     date.numericDate < this.state.thisYear? date.numericDate.setFullYear((this.state.thisYear + 1)) : date.numericDate
+        // ))
+        // console.log(this.state.dates)
     }
 
-    componentDidMount() {
-        this.state.dates.map(date =>(
-            date.numericDate < this.state.thisYear? date.numericDate.setFullYear((this.state.thisYear + 1)) : date.numericDate
-        ))
-    }
-)}
 
 
     render() {
