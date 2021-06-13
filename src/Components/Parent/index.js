@@ -13,6 +13,10 @@ class Parent extends React.Component {
         }
     }
     componentDidMount() {
+        this.setDates()
+    }
+
+    setDates = () => {
         this.setState({
             dates: [
                 {
@@ -34,19 +38,30 @@ class Parent extends React.Component {
         })
     }
 
-// const msInDay = 1000 * 60 * 60 *24
-    // console.log(this.state.dates)
-    // this.state.dates.map(date =>(
-    //     date.numericDate < this.state.thisYear? date.numericDate.setFullYear((this.state.thisYear + 1)) : date.numericDate
-    // ))
-    // console.log(this.state.dates)
+    prepareDates = () => {
+        this.checkDateIsFuture()
+        this.calculateDaysUntil()
+    }
+
+    checkDateIsFuture = () => {
+        this.state.dates.map(date => (
+            date.numericDate < this.state.thisYear? date.numericDate.setFullYear((this.state.thisYear + 1)) : date.numericDate
+        ))
+    }
+
+    calculateDaysUntil = () => {
+        const msInDay = 1000 * 60 * 60 *24
+        this.state.dates.map(date => (
+           date.daysUntil = Math.round(date.numericDate.getTime() - this.state.today.getTime()/msInDay)
+        ))
+    }
 
     render() {
         return (
             <div>
                 <TextElement />
                 <DisplayElement dates={this.state.dates}/>
-                <ButtonElement dates={this.state.dates}/>
+                <ButtonElement dates={this.state.dates} handleClick={this.prepareDates()} />
             </div>
         )
     }
