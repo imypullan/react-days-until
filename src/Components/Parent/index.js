@@ -9,7 +9,8 @@ class Parent extends React.Component {
         this.state = {
             today: new Date(),
             thisYear: new Date().getFullYear(),
-            dates: []
+            dates: [],
+            showInfo: false
         }
     }
     componentDidMount() {
@@ -53,7 +54,7 @@ class Parent extends React.Component {
     calculateDaysUntil = () => {
         const msInDay = 1000 * 60 * 60 *24
         this.state.dates.map(date => (
-           date.daysUntil = Math.round(date.numericDate.getTime() - this.state.today.getTime()/msInDay)
+           date.daysUntil = Math.round((date.numericDate.getTime() - this.state.today.getTime())/msInDay)
         ))
     }
 
@@ -61,7 +62,7 @@ class Parent extends React.Component {
         return (
             <div>
                 <TextElement />
-                <DisplayElement dates={this.state.dates}/>
+                <DisplayElement dates={this.state.dates} showInfo={this.state.showInfo}/>
                 <ButtonElement dates={this.state.dates} handleClick={this.prepareDates} />
             </div>
         )
