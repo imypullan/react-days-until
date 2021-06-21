@@ -96,10 +96,13 @@ class Parent extends React.Component {
         t.dates.forEach(date => {
             this.checkDateIsFuture(date)
             if(date.daysuntil === 0) {
-                this.calculatedaysuntil(date)
+                this.calculateDaysUntil(date)
             }
             this.prepareDatesRecursive(date)
             console.log(date)
+        })
+        this.setState({
+            showInfo: true
         })
     }
 
@@ -110,7 +113,7 @@ class Parent extends React.Component {
         return date.numericdate
     }
 
-    calculatedaysuntil = (date) => {
+    calculateDaysUntil = (date) => {
         const msInDay = 1000 * 60 * 60 *24
         return date.daysuntil = Math.round((date.numericdate.getTime() - this.state.today.getTime())/msInDay)
     }
@@ -120,7 +123,6 @@ class Parent extends React.Component {
             <div className="container">
                 <Sidebar dates={this.state.dates} />
                 <Display dates={this.state.dates} showInfo={this.state.showInfo} handleClick={() => this.prepareDatesRecursive(this.state.dates[0])}/>
-                <button onClick={() => this.prepareDatesRecursive(this.state.dates[0])}>button</button>
             </div>
         )
     }
