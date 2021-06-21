@@ -8,6 +8,7 @@ class Parent extends React.Component {
         this.state = {
             today: new Date(),
             thisYear: new Date().getFullYear(),
+            nextYear: ((new Date().getFullYear()) +1),
             dates: [],
             showInfo: false
         }
@@ -52,21 +53,57 @@ class Parent extends React.Component {
                             label: "UK 2022 Bank Holidays",
                             dates: [
                                 {
-                                    name: "August Bank Holiday",
-                                    label: "August Bank Holiday",
-                                    numericdate: new Date(this.state.thisYear, 7, 29),
+                                    name: "New Year's Day",
+                                    label: "New Year's Day",
+                                    numericdate: new Date(this.state.nextYear, 0, 1),
                                     daysuntil: 0
                                 },
                                 {
-                                    name: "Christmas Day bank holiday",
-                                    label: "Christmas Day Bank Holiday",
-                                    numericdate: new Date(this.state.thisYear, 11, 25),
+                                    name: "Good Friday",
+                                    label: "Good Friday",
+                                    numericdate: new Date(this.state.nextYear, 3, 15),
+                                    daysuntil: 0
+                                },
+                                {
+                                    name: "Easter Monday",
+                                    label: "Easter Monday",
+                                    numericdate: new Date(this.state.nextYear, 3, 18),
+                                    daysuntil: 0
+                                },
+                                {
+                                    name: "May Bank Holiday",
+                                    label: "May Bank Holiday",
+                                    numericdate: new Date(this.state.nextYear, 4, 2),
+                                    daysuntil: 0
+                                },
+                                {
+                                    name: "Spring Bank Holiday",
+                                    label: "Spring Bank Holiday",
+                                    numericdate: new Date(this.state.nextYear, 5, 2),
+                                    daysuntil: 0
+                                },
+                                {
+                                    name: "Platinum Jubilee Bank Holiday",
+                                    label: "Platinum Jublilee Bank Holiday",
+                                    numericdate: new Date(this.state.nextYear, 5, 3),
+                                    daysuntil: 0
+                                },
+                                {
+                                    name: "August Bank Holiday",
+                                    label: "August Bank Holiday",
+                                    numericdate: new Date(this.state.nextYear, 7, 29),
                                     daysuntil: 0
                                 },
                                 {
                                     name: "Boxing Day",
                                     label: "Boxing Day Bank Holiday",
-                                    numericdate: new Date(this.state.thisYear, 11, 26),
+                                    numericdate: new Date(this.state.nextYear, 11, 26),
+                                    daysuntil: 0
+                                },
+                                {
+                                    name: "Christmas Day Bank Holiday",
+                                    label: "Christmas Day Bank Holiday",
+                                    numericdate: new Date(this.state.nextYear, 11, 27),
                                     daysuntil: 0
                                 }
                             ]
