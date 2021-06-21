@@ -31,7 +31,7 @@ class Parent extends React.Component {
                                     name: "Christmas Day",
                                     label: "Christmas Day",
                                     numericDate: new Date(this.state.thisYear, 11, 25),
-                                    daysUntil: 0
+                                    daysUntil: 0,
                                 },
                                 {
                                     name: "New Year's Day",
@@ -79,13 +79,49 @@ class Parent extends React.Component {
     }
 
     prepareDates = () => {
-        // this.checkDateIsFuture()
-        // this.calculateDaysUntil()
-        // this.setState({
-        //     showInfo: true
-        // })
-        console.log('hello')
+        let dates = this.state.dates
+        if (dates.children.length === 0) {
+            return
+        }
+        dates.children.forEach(date => {
+            console.log(date.name)
+            this.prepareDatesRecursive(date)
+        })
     }
+
+    prepareDatesRecursive(t) {
+        console.log(t.dates)
+        if(t.dates == undefined) {
+            return
+        }
+        t.dates.forEach(date => {
+            console.log(date.name)
+            this.prepareDatesRecursive(date)
+        })
+        return console.log('boi')
+
+        // if (t.dates.length === 0) {
+        //     return
+        // }
+        // t.dates.forEach(date => {
+        //     console.log(date.name)
+        //     this.prepareDatesRecursive(date)
+        // })
+    }
+
+
+
+    // prepareDates = () => {
+    //     // this.checkDateIsFuture()
+    //     // this.calculateDaysUntil()
+    //     // this.setState({
+    //     //     showInfo: true
+    //     // })
+    // }
+
+
+
+
 
     checkDateIsFuture = () => {
         this.state.dates.map(date => (
@@ -104,7 +140,8 @@ class Parent extends React.Component {
         return (
             <div className="container">
                 <Sidebar dates={this.state.dates} />
-                <Display dates={this.state.dates} showInfo={this.state.showInfo} prepareDates={this.prepareDates}/>
+                <Display dates={this.state.dates} showInfo={this.state.showInfo} handleClick={this.prepareDatesRecursive}/>
+                <button onClick={() => this.prepareDatesRecursive(this.state.dates[0])}>button</button>
             </div>
         )
     }

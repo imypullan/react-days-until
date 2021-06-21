@@ -22,7 +22,7 @@ class Display extends React.Component {
             <div>
                 <TextElement />
                 <DisplayElement dates={this.props.dates} showInfo={this.props.showInfo}/>
-                <ButtonElement handleClick={this.props.prepareDates} />
+                <ButtonElement handleClick={this.props.handleClick} />
             </div>
         )
     }
