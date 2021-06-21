@@ -30,20 +30,20 @@ class Parent extends React.Component {
                                 {
                                     name: "Christmas Day",
                                     label: "Christmas Day",
-                                    numericDate: new Date(this.state.thisYear, 11, 25),
-                                    daysUntil: 0,
+                                    numericdate: new Date(this.state.thisYear, 11, 25),
+                                    daysuntil: 0,
                                 },
                                 {
                                     name: "New Year's Day",
                                     label: "New Year's Day",
-                                    numericDate: new Date(this.state.thisYear, 12, 1),
-                                    daysUntil: 0
+                                    numericdate: new Date(this.state.thisYear, 12, 1),
+                                    daysuntil: 0
                                 },
                                 {
                                     name: "Valentine's Day",
                                     label: "Valentines Day",
-                                    numericDate: new Date(this.state.thisYear, 1, 14),
-                                    daysUntil: 0
+                                    numericdate: new Date(this.state.thisYear, 1, 14),
+                                    daysuntil: 0
                                 }
                             ]
                         },
@@ -54,20 +54,20 @@ class Parent extends React.Component {
                                 {
                                     name: "August Bank Holiday",
                                     label: "August Bank Holiday",
-                                    numericDate: new Date(this.state.thisYear, 7, 29),
-                                    daysUntil: 0
+                                    numericdate: new Date(this.state.thisYear, 7, 29),
+                                    daysuntil: 0
                                 },
                                 {
                                     name: "Christmas Day bank holiday",
                                     label: "Christmas Day Bank Holiday",
-                                    numericDate: new Date(this.state.thisYear, 11, 25),
-                                    daysUntil: 0
+                                    numericdate: new Date(this.state.thisYear, 11, 25),
+                                    daysuntil: 0
                                 },
                                 {
                                     name: "Boxing Day",
                                     label: "Boxing Day Bank Holiday",
-                                    numericDate: new Date(this.state.thisYear, 11, 26),
-                                    daysUntil: 0
+                                    numericdate: new Date(this.state.thisYear, 11, 26),
+                                    daysuntil: 0
                                 }
                             ]
                         }
@@ -90,54 +90,36 @@ class Parent extends React.Component {
     }
 
     prepareDatesRecursive(t) {
-        if(t.dates == undefined) {
-            console.log('bye')
+        if(t.dates === undefined) {
             return
         }
         t.dates.forEach(date => {
-            console.log(date.name)
-            console.log(date)
             this.checkDateIsFuture(date)
-            if(date.daysUntil === 0) {
-                this.calculateDaysUntil(date)
+            if(date.daysuntil === 0) {
+                this.calculatedaysuntil(date)
             }
-            console.log(date.daysUntil)
             this.prepareDatesRecursive(date)
+            console.log(date)
         })
-        return console.log('boi')
     }
-
-
-
-    // prepareDates = () => {
-    //     // this.checkDateIsFuture()
-    //     // this.calculateDaysUntil()
-    //     // this.setState({
-    //     //     showInfo: true
-    //     // })
-    // }
-
-
-
-
 
     checkDateIsFuture = (date) => {
-        if(date.numericDate < this.state.today) {
-            return date.numericDate.setFullYear((this.state.thisYear + 1))
+        if(date.numericdate < this.state.today) {
+            return date.numericdate.setFullYear((this.state.thisYear + 1))
         }
-        return date.numericDate
+        return date.numericdate
     }
 
-    calculateDaysUntil = (date) => {
+    calculatedaysuntil = (date) => {
         const msInDay = 1000 * 60 * 60 *24
-        return date.daysUntil = Math.round((date.numericDate.getTime() - this.state.today.getTime())/msInDay)
+        return date.daysuntil = Math.round((date.numericdate.getTime() - this.state.today.getTime())/msInDay)
     }
 
     render() {
         return (
             <div className="container">
                 <Sidebar dates={this.state.dates} />
-                <Display dates={this.state.dates} showInfo={this.state.showInfo} handleClick={this.prepareDatesRecursive}/>
+                <Display dates={this.state.dates} showInfo={this.state.showInfo} handleClick={() => this.prepareDatesRecursive(this.state.dates[0])}/>
                 <button onClick={() => this.prepareDatesRecursive(this.state.dates[0])}>button</button>
             </div>
         )

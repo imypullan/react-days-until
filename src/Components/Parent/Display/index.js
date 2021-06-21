@@ -4,9 +4,6 @@ import DisplayElement from "./DisplayElement";
 import TextElement from "./TextElement";
 
 class Display extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     componentDidUpdate(prevProps) {
         if (this.props.showInfo !== prevProps.showInfo) {
