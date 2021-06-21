@@ -107,7 +107,7 @@ class Parent extends React.Component {
                 <TextElement />
                 <DisplayElement dates={this.state.dates} showInfo={this.state.showInfo}/>
                 <ButtonElement handleClick={this.prepareDates} />
-                <Sidebar />
+                <Sidebar dates={this.state.dates} />
             </div>
         )
     }

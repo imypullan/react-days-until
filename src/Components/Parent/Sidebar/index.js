@@ -1,21 +1,21 @@
 import React from 'react'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
+import SidebarItem from "./SidebarItem";
+import List from "@material-ui/core/List";
 
-function Sidebar() {
+function Sidebar({ dates, depthStep, depth }) {
     return (
-        <List disablePadding dense>
-            <ListItem button>
-                <ListItemText>Home</ListItemText>
-            </ListItem>
-            <ListItem button>
-                <ListItemText>Billing</ListItemText>
-            </ListItem>
-            <ListItem button>
-                <ListItemText>Settings</ListItemText>
-            </ListItem>
-        </List>
+        <div className="sidebar">
+            <List disablePadding dense>
+                {dates.map((sidebarItem, index) => (
+                    <SidebarItem
+                        key={`${sidebarItem.name}${index}`}
+                        depthStep={depthStep}
+                        depth={depth}
+                        {...sidebarItem}
+                    />
+                ))}
+            </List>
+        </div>
     )
 }
 

@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 
 
-function SidebarItem({ label, items, depthStep = 10, depth = 0, ...rest }) {
+function SidebarItem({ label, dates, depthStep = 10, depth = 0, ...rest }) {
     return (
         <>
             <ListItem button dense {...rest}>
@@ -12,9 +12,9 @@ function SidebarItem({ label, items, depthStep = 10, depth = 0, ...rest }) {
                     <span>{label}</span>
                 </ListItemText>
             </ListItem>
-            {Array.isArray(items) ? (
+            {Array.isArray(dates) ? (
                 <List disablePadding dense>
-                    {items.map((subItem) => (
+                    {dates.map((subItem) => (
                         <SidebarItem
                             key={subItem.name}
                             depth={depth + 1}
