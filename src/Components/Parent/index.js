@@ -41,7 +41,7 @@ class Parent extends React.Component {
                                 },
                                 {
                                     name: "Valentine's Day",
-                                    label: "Valentines Day",
+                                    label: "Valentine's Day",
                                     numericdate: new Date(this.state.thisYear, 1, 14),
                                     daysuntil: 0
                                 }

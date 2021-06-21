@@ -26,7 +26,6 @@ class DisplayElement extends React.Component {
         return (
             <div style={{display: this.state.showInfo? "block": "none"}}>
                 <ul>
-                    {console.log(this.state.datesToLookForwardTo)}
                     {this.state.datesToLookForwardTo.map(date=> {
                         return (
                             <li key={date.name}>
