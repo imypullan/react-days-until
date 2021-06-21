@@ -126,7 +126,7 @@ class Parent extends React.Component {
             }
             this.prepareDatesRecursive(date)
         })
-        this.setState({
+        return this.setState({
             showInfo: true
         })
     }
