@@ -2,6 +2,7 @@ import React from 'react'
 import TextElement from "./TextElement"
 import DisplayElement from "./DisplayElement"
 import ButtonElement from "./ButtonElement"
+import Sidebar from "./Sidebar";
 
 class Parent extends React.Component {
     constructor(props) {
@@ -21,20 +22,60 @@ class Parent extends React.Component {
         this.setState({
             dates: [
                 {
-                    name: "Christmas",
-                    numericDate: new Date(this.state.thisYear, 11, 25),
-                    daysUntil: 0
+                    name: "Days until",
+                    label: "Days until",
+                    dates: [
+                        {
+                            name: "Dates to look forward to",
+                            label: "Dates to look forward to",
+                            dates: [
+                                {
+                                    name: "Christmas Day",
+                                    label: "Christmas Day",
+                                    numericDate: new Date(this.state.thisYear, 11, 25),
+                                    daysUntil: 0
+                                },
+                                {
+                                    name: "New Year's Day",
+                                    label: "New Year's Day",
+                                    numericDate: new Date(this.state.thisYear, 12, 1),
+                                    daysUntil: 0
+                                },
+                                {
+                                    name: "Valentine's Day",
+                                    label: "Valentines Day",
+                                    numericDate: new Date(this.state.thisYear, 1, 14),
+                                    daysUntil: 0
+                                }
+                            ]
+                        },
+                        {
+                            name: "UK 2022 Bank Holidays",
+                            label: "UK 2022 Bank Holidays",
+                            dates: [
+                                {
+                                    name: "August Bank Holiday",
+                                    label: "August Bank Holiday",
+                                    numericDate: new Date(this.state.thisYear, 7, 29),
+                                    daysUntil: 0
+                                },
+                                {
+                                    name: "Christmas Day bank holiday",
+                                    label: "Christmas Day Bank Holiday",
+                                    numericDate: new Date(this.state.thisYear, 11, 25),
+                                    daysUntil: 0
+                                },
+                                {
+                                    name: "Boxing Day",
+                                    label: "Boxing Day Bank Holiday",
+                                    numericDate: new Date(this.state.thisYear, 11, 26),
+                                    daysUntil: 0
+                                }
+                            ]
+                        }
+
+                    ]
                 },
-                {
-                    name: "New Year's Day",
-                    numericDate: new Date(this.state.thisYear, 12, 1),
-                    daysUntil: 0
-                },
-                {
-                    name: "Valentine's Day",
-                    numericDate: new Date(this.state.thisYear, 1, 14),
-                    daysUntil: 0
-                }
             ]
         })
     }
@@ -66,6 +107,7 @@ class Parent extends React.Component {
                 <TextElement />
                 <DisplayElement dates={this.state.dates} showInfo={this.state.showInfo}/>
                 <ButtonElement handleClick={this.prepareDates} />
+                <Sidebar />
             </div>
         )
     }
