@@ -90,23 +90,21 @@ class Parent extends React.Component {
     }
 
     prepareDatesRecursive(t) {
-        console.log(t.dates)
         if(t.dates == undefined) {
+            console.log('bye')
             return
         }
         t.dates.forEach(date => {
             console.log(date.name)
+            console.log(date)
+            this.checkDateIsFuture(date)
+            if(date.daysUntil === 0) {
+                this.calculateDaysUntil(date)
+            }
+            console.log(date.daysUntil)
             this.prepareDatesRecursive(date)
         })
         return console.log('boi')
-
-        // if (t.dates.length === 0) {
-        //     return
-        // }
-        // t.dates.forEach(date => {
-        //     console.log(date.name)
-        //     this.prepareDatesRecursive(date)
-        // })
     }
 
 
@@ -123,17 +121,16 @@ class Parent extends React.Component {
 
 
 
-    checkDateIsFuture = () => {
-        this.state.dates.map(date => (
-            date.numericDate < this.state.today? date.numericDate.setFullYear((this.state.thisYear + 1)) : date.numericDate
-        ))
+    checkDateIsFuture = (date) => {
+        if(date.numericDate < this.state.today) {
+            return date.numericDate.setFullYear((this.state.thisYear + 1))
+        }
+        return date.numericDate
     }
 
-    calculateDaysUntil = () => {
+    calculateDaysUntil = (date) => {
         const msInDay = 1000 * 60 * 60 *24
-        this.state.dates.map(date => (
-           date.daysUntil = Math.round((date.numericDate.getTime() - this.state.today.getTime())/msInDay)
-        ))
+        return date.daysUntil = Math.round((date.numericDate.getTime() - this.state.today.getTime())/msInDay)
     }
 
     render() {
