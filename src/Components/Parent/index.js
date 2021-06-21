@@ -99,7 +99,6 @@ class Parent extends React.Component {
                 this.calculateDaysUntil(date)
             }
             this.prepareDatesRecursive(date)
-            console.log(date)
         })
         this.setState({
             showInfo: true

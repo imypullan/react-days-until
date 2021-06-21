@@ -1,12 +1,12 @@
 import React from 'react'
-
 class DisplayElement extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
             dates: this.props.dates,
-            showInfo: this.props.showInfo
+            showInfo: this.props.showInfo,
+            datesToLookForwardTo: []
         }
     }
 
@@ -14,20 +14,26 @@ class DisplayElement extends React.Component {
         if (this.props.showInfo !== prevProps.showInfo) {
             this.setState({
                 dates: this.props.dates,
-                showInfo: this.props.showInfo
+                showInfo: this.props.showInfo,
+                datesToLookForwardTo: this.props.dates[0].dates[0].dates
             })
         }
     }
+
+
 
     render() {
         return (
             <div style={{display: this.state.showInfo? "block": "none"}}>
                 <ul>
-                    {this.state.dates.map(date=>(
-                        <li key={date.name}>
-                            {date.daysUntil} days until {date.name}
-                        </li>
-                    ))}
+                    {console.log(this.state.datesToLookForwardTo)}
+                    {this.state.datesToLookForwardTo.map(date=> {
+                        return (
+                            <li key={date.name}>
+                                {date.daysuntil} days until {date.name}
+                            </li>
+                        )
+                    })}
                 </ul>
             </div>
         )
