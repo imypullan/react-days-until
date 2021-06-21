@@ -1,8 +1,6 @@
 import React from 'react'
-import TextElement from "./TextElement"
-import DisplayElement from "./DisplayElement"
-import ButtonElement from "./ButtonElement"
 import Sidebar from "./Sidebar";
+import Display from "./Display";
 
 class Parent extends React.Component {
     constructor(props) {
@@ -103,11 +101,9 @@ class Parent extends React.Component {
 
     render() {
         return (
-            <div>
-                <TextElement />
-                <DisplayElement dates={this.state.dates} showInfo={this.state.showInfo}/>
-                <ButtonElement handleClick={this.prepareDates} />
+            <div className="container">
                 <Sidebar dates={this.state.dates} />
+                <Display dates={this.state.dates} showInfo={this.state.showInfo}/>
             </div>
         )
     }
