@@ -8,12 +8,21 @@ class Display extends React.Component {
         super(props)
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.showInfo !== prevProps.showInfo) {
+            this.setState({
+                dates: this.props.dates,
+                showInfo: this.props.showInfo
+            })
+        }
+    }
+
     render() {
         return (
             <div>
                 <TextElement />
-                {/*<DisplayElement dates={this.state.dates} showInfo={this.state.showInfo}/>*/}
-                {/*<ButtonElement handleClick={this.prepareDates} />*/}
+                <DisplayElement dates={this.props.dates} showInfo={this.props.showInfo}/>
+                <ButtonElement handleClick={this.props.prepareDates} />
             </div>
         )
     }

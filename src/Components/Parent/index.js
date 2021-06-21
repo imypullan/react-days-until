@@ -79,11 +79,12 @@ class Parent extends React.Component {
     }
 
     prepareDates = () => {
-        this.checkDateIsFuture()
-        this.calculateDaysUntil()
-        this.setState({
-            showInfo: true
-        })
+        // this.checkDateIsFuture()
+        // this.calculateDaysUntil()
+        // this.setState({
+        //     showInfo: true
+        // })
+        console.log('hello')
     }
 
     checkDateIsFuture = () => {
@@ -103,7 +104,7 @@ class Parent extends React.Component {
         return (
             <div className="container">
                 <Sidebar dates={this.state.dates} />
-                <Display dates={this.state.dates} showInfo={this.state.showInfo}/>
+                <Display dates={this.state.dates} showInfo={this.state.showInfo} prepareDates={this.prepareDates}/>
             </div>
         )
     }
