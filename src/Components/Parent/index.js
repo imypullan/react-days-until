@@ -115,17 +115,6 @@ class Parent extends React.Component {
         })
     }
 
-    prepareDates = () => {
-        let dates = this.state.dates
-        if (dates.children.length === 0) {
-            return
-        }
-        dates.children.forEach(date => {
-            console.log(date.name)
-            this.prepareDatesRecursive(date)
-        })
-    }
-
     prepareDatesRecursive(t) {
         if(t.dates === undefined) {
             return
